@@ -7,10 +7,15 @@
 	<groupId>com.tantalum</groupId>
 	<artifactId>tantalum-messages</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<name>tantalum-messages</name>
 	<description>Interview test Tantalum</description>
+	
+	<modules>
+    	<module>messages-principal</module>
+		<module>messages-uuid</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
