@@ -1,16 +1,12 @@
 package com.tantalum.messages.beans;
 
-import java.security.Timestamp;
+import java.time.LocalDateTime;
 
 public interface IMessage {
 	
-	int getId();
-	void setId(int pId);
+	Long getId();
+	void setId(Long pId);
 	
-	String getText();
-	void setText(String pText);
-	
-	Timestamp getTimestamp();
-	void setTimestamp(Timestamp pTimestamp);
-
+	LocalDateTime getModifiedTime();
+	void setModifiedTime(LocalDateTime pModifiedTime);
 }

@@ -10,7 +10,6 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>com.tantalum</groupId>
   <artifactId>messages-uuid</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+
 </project>
