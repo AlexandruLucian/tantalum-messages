@@ -3,6 +3,7 @@ package com.tantalum.message.api.impl;
 import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,13 +16,13 @@ import com.tantalum.messages.beans.impl.TextMessage;
 @RestController
 public class MessageController {
 	
-	@RequestMapping(value = "/message", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/message", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<TextMessage> createMessage(@RequestBody TextMessage message) {
 		
 		return new ResponseEntity<TextMessage>(message,  HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "/message/{id}", method = RequestMethod.GET, consumes = "application/json")
+	@RequestMapping(value = "/message/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<TextMessage> getMessage(@PathVariable Long id) {
 		
 		TextMessage message1 = new TextMessage(id, "hello", LocalDateTime.now());

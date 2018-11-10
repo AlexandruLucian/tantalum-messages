@@ -10,11 +10,13 @@ public class TextMessage implements IMessage {
 	private String text;
 	private LocalDateTime modifiedTime;
 	
-	
 	public TextMessage(Long pId, String pText, LocalDateTime pModifiedTime) {
 		this.id = pId;
 		this.text = pText;
 		this.modifiedTime = pModifiedTime;
+	}
+	
+	public TextMessage() {
 	}
 
 	public Long getId() {
