@@ -2,9 +2,11 @@ package com.tantalum.message.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
-@SpringBootApplication(scanBasePackages = {"com.tantalum"})
+@SpringBootApplication(scanBasePackages = {"com.tantalum.*"})
+@EnableDiscoveryClient
 public class MessageApiApplication {
 
 	public static void main(String[] args) {
