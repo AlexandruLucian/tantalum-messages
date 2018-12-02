@@ -23,20 +23,20 @@ public class MessageController {
 	@Autowired
 	private IMessageService messageServiceText;
 	
-	@RequestMapping(value = "/message", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/message", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IMessage> createMessage(@RequestBody TextMessage message) {
 		IMessage result = messageServiceText.createMessage(message);
 		return new ResponseEntity<IMessage>(result,  HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "/message/{id}", method = RequestMethod.GET, consumes = "application/json")
+	@RequestMapping(value = "/message/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IMessage> getMessage(@PathVariable Long id) {
 		
 		IMessage result = messageServiceText.getMessage(id);
 		return new ResponseEntity<IMessage>(result,  HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/messages", method = RequestMethod.GET, consumes = "application/json")
+@RequestMapping(value = "/messages", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<IMessage>> getMessages() {
 		
 		TextMessage message1 = new TextMessage(10l, "hello", LocalDateTime.now());
