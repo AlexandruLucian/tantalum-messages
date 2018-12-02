@@ -1,8 +1,9 @@
-package com.tantalum.messages.beans.impl;
+package com.tantalum.message.beans.impl;
 
 import java.time.LocalDateTime;
 
-import com.tantalum.messages.beans.IMessage;
+import com.tantalum.message.beans.IMessage;
+
 
 public class TextMessage implements IMessage {
 	
@@ -17,6 +18,9 @@ public class TextMessage implements IMessage {
 		this.modifiedTime = pModifiedTime;
 	}
 
+	public TextMessage() {
+	}
+	
 	public Long getId() {
 		return id;
 	}
