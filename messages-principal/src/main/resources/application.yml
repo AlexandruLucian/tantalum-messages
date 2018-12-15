@@ -1,3 +1,16 @@
+logging:
+  level:
+    root: ERROR
+
 spring:
   application:
     instance_id: adminservice
+
+  datasource:
+    url: dbc:derby:mydb;create=true
+  jpa: 
+    properties: 
+      hibernate: 
+        dialect: org.hibernate.dialect.DerbyTenSevenDialect
+    hibernate: 
+      ddl-auto: update
