@@ -1,12 +1,14 @@
-package com.tantalum.message.beans.impl;
+package com.tantalum.message.api.model;
 
 import java.time.LocalDateTime;
 
-import com.tantalum.message.beans.IMessage;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-
-public class TextMessage implements IMessage {
+@Entity
+public class TextMessage {
 	
+	@Id
 	private Long id;
 	private String text;
 	private LocalDateTime modifiedTime;

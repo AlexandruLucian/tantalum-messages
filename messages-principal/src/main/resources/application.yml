@@ -7,7 +7,7 @@ spring:
     instance_id: adminservice
 
   datasource:
-    url: dbc:derby:mydb;create=true
+    url: jdbc:derby:mydb;create=true
   jpa: 
     properties: 
       hibernate: 

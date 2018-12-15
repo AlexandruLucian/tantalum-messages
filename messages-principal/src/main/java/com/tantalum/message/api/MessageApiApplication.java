@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-import com.tantalum.message.api.impl.MessageController;
+import com.tantalum.message.api.resource.MessageController;
 
 @SpringBootApplication(scanBasePackages={"com.tantalum.message"})
 @EnableDiscoveryClient
