@@ -26,8 +26,7 @@ public class MessageServiceText implements IMessageService {
 
 	@Override
 	public TextMessage getMessage(Long messageId) {
-		TextMessage message1 = new TextMessage(messageId, "hello", LocalDateTime.now());
-		return message1;
+		return messageRepository.findById(messageId).get();
 	}
 	
 	@Override
