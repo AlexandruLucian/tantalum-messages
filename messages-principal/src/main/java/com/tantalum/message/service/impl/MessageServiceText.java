@@ -51,9 +51,18 @@ public class MessageServiceText implements IMessageService {
 	}
 
 	@Override
-	public void deleteMessage(Long messageId) {
-		// TODO Auto-generated method stub
-		
+	public String deleteMessage(Long messageId) {
+		TextMessage message = messageRepository.findById(messageId).get();
+		if(null == message) {
+			return "Sorry, there is no message for the id provided.";
+		} else {
+			if (message.getModifiedTime().isBefore(LocalDateTime.now().plusMinutes(-2))) {
+				messageRepository.deleteById(messageId);
+				return "Message deleted.";
+			} else {
+				return "Message can't be deleted as is not created more then 2 minutes ago.";
+			}
+		}
 	}
 
 }

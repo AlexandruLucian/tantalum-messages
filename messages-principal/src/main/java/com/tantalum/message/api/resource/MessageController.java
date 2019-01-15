@@ -52,4 +52,11 @@ public class MessageController {
 		TextMessage result = messageServiceText.updateMessage(message);
 		return new ResponseEntity<TextMessage>(result, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/message/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> deleteMessage(@PathVariable Long id) {
+
+		String result = messageServiceText.deleteMessage(id);
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+	}
 }
