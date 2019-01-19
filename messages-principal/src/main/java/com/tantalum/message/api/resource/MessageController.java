@@ -36,7 +36,8 @@ public class MessageController {
 	public ResponseEntity<Optional<TextMessage>> getMessage(@PathVariable Long id) {
 
 		Optional<TextMessage> result = messageServiceText.getMessage(id);
-		return new ResponseEntity<Optional<TextMessage>>(result, HttpStatus.OK);
+		if(result.isPresent()) return new ResponseEntity<Optional<TextMessage>>(result, HttpStatus.OK);
+		else return new ResponseEntity<Optional<TextMessage>>(Optional.empty(), HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/messages", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
