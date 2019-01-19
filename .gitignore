@@ -6,6 +6,7 @@
 *.dat
 *.log
 *.lck
+*.ctrl
 
 ### Eclipse ###
 .apt_generated

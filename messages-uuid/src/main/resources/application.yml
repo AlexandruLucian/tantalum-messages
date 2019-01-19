@@ -1,6 +1,9 @@
+server:
+  port: 8081
+
 spring:
   application:
-    instance_id: adminservice
+    instance_id: uuid-service
     
   datasource:
     url: jdbc:derby:mydb;create=true

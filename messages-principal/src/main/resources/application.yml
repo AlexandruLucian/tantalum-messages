@@ -1,10 +1,13 @@
+server:
+  port: 8080
+
 logging:
   level:
     root: ERROR
 
 spring:
   application:
-    instance_id: adminservice
+    instance_id: principal-service
 
   datasource:
     url: jdbc:derby:mydb;create=true
