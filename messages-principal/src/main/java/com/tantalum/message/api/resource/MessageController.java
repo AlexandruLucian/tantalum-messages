@@ -20,7 +20,7 @@ import com.tantalum.message.service.IMessageService;
 
 @RestController
 public class MessageController {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(MessageController.class);
 
 	@Autowired
@@ -44,7 +44,7 @@ public class MessageController {
 	public ResponseEntity<List<TextMessage>> getMessages() {
 
 		List<TextMessage> results = messageServiceText.getAllMessages();
-		
+
 		return new ResponseEntity<List<TextMessage>>(results, HttpStatus.OK);
 	}
 
@@ -54,11 +54,11 @@ public class MessageController {
 		TextMessage result = messageServiceText.updateMessage(message);
 		return new ResponseEntity<TextMessage>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/message/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> deleteMessage(@PathVariable Long id) {
 
-		String result = messageServiceText.deleteMessage(id);
-		return new ResponseEntity<String>(result, HttpStatus.OK);
+		messageServiceText.deleteMessage(id);
+		return new ResponseEntity<String>("Message successfully deleted.", HttpStatus.OK);
 	}
 }

@@ -15,9 +15,9 @@ import com.tantalum.message.api.model.TextMessage;
 import com.tantalum.message.service.IMessageService;
 
 @Service
-public class MessageServiceText implements IMessageService {
+public class MessageService implements IMessageService {
 	
-	private static final Logger log = LoggerFactory.getLogger(MessageServiceText.class);
+	private static final Logger log = LoggerFactory.getLogger(MessageService.class);
 	
 	@Value("${spring.datasource.url}")
     private String derbyDatasourceUrl;
@@ -55,16 +55,11 @@ public class MessageServiceText implements IMessageService {
 	}
 
 	@Override
-	public String deleteMessage(Long messageId) {
-		TextMessage message = messageRepository.findById(messageId).get();
-		if(null == message) {
-			return "Sorry, there is no message for the id provided.";
-		} else {
-			if (message.getModifiedTime().isBefore(LocalDateTime.now().plusMinutes(-2))) {
+	public void deleteMessage(Long messageId) {
+	Optional<TextMessage> message = messageRepository.findById(messageId);
+		if(message.isPresent()) {
+			if (message.get().getModifiedTime().isBefore(LocalDateTime.now().plusMinutes(-2))) {
 				messageRepository.deleteById(messageId);
-				return "Message deleted.";
-			} else {
-				return "Message can't be deleted as is not created more then 2 minutes ago.";
 			}
 		}
 	}

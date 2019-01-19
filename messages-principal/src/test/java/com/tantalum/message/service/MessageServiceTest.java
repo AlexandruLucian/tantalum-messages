@@ -15,15 +15,15 @@ import org.mockito.MockitoAnnotations;
 
 import com.tantalum.message.api.dao.MessageRepository;
 import com.tantalum.message.api.model.TextMessage;
-import com.tantalum.message.service.impl.MessageServiceText;
+import com.tantalum.message.service.impl.MessageService;
 
-public class MessageServiceTextTest {
+public class MessageServiceTest {
 
 	@Mock
 	private MessageRepository messageRepository;
 
 	@InjectMocks
-	private MessageServiceText messageServiceText;
+	private MessageService messageService;
 
 	@Before
 	public void setUp() throws Exception {
@@ -33,10 +33,10 @@ public class MessageServiceTextTest {
 	@Test
 	public void shouldGetMessage_whenMessageIdExists() {
 		// Prepare
-		TextMessage returnTextMessage = new TextMessage(Long.valueOf(1), "abkdsjbkad", LocalDateTime.now());
-		when(messageRepository.findById(anyLong())).thenReturn(Optional.of(returnTextMessage));
+		TextMessage someTextMessage = new TextMessage(Long.valueOf(1), "abkdsjbkad", LocalDateTime.now());
+		when(messageRepository.findById(anyLong())).thenReturn(Optional.of(someTextMessage));
 		// Action
-		Optional<TextMessage> returnedTextMessage = messageServiceText.getMessage(Long.valueOf(1));
+		Optional<TextMessage> returnedTextMessage = messageService.getMessage(Long.valueOf(1));
 		// Assert
 		Assertions.assertThat(returnedTextMessage.isPresent()).isTrue();
 	}
@@ -46,7 +46,7 @@ public class MessageServiceTextTest {
 		// Prepare
 		when(messageRepository.findById(anyLong())).thenReturn(Optional.empty());
 		// Action
-		Optional<TextMessage> returnedTextMessage = messageServiceText.getMessage(Long.valueOf(1));
+		Optional<TextMessage> returnedTextMessage = messageService.getMessage(Long.valueOf(1));
 		// Assert
 		Assertions.assertThat(returnedTextMessage.isPresent()).isFalse();
 

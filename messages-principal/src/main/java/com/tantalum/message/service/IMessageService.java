@@ -14,5 +14,5 @@ public interface IMessageService {
 	TextMessage createMessage(TextMessage message);
 	TextMessage updateMessage(TextMessage message);
 	List<TextMessage> getAllMessages();
-	String deleteMessage(Long messageId);
+	void deleteMessage(Long messageId);
 }
