@@ -1,6 +1,7 @@
 package com.tantalum.message.api.resource;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,10 +33,11 @@ public class MessageController {
 	}
 
 	@RequestMapping(value = "/message/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<TextMessage> getMessage(@PathVariable Long id) {
+	public ResponseEntity<Optional<TextMessage>> getMessage(@PathVariable Long id) {
 
-		TextMessage result = messageServiceText.getMessage(id);
-		return new ResponseEntity<TextMessage>(result, HttpStatus.OK);
+		Optional<TextMessage> result = messageServiceText.getMessage(id);
+		if(result.isPresent()) return new ResponseEntity<Optional<TextMessage>>(result, HttpStatus.OK);
+		else return new ResponseEntity<Optional<TextMessage>>(Optional.empty(), HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/messages", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
