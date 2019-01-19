@@ -38,7 +38,7 @@ public class MessageServiceText implements IMessageService {
 	@Override
 	public TextMessage createMessage(TextMessage message) {
 		log.debug("createMessage ----- Start");
-		//TextMessage message1 = new TextMessage(message.getId(), "hello", LocalDateTime.now());
+		message.setModifiedTime(LocalDateTime.now());
 		messageRepository.save(message);
 		log.debug("Message created.");
 		log.debug("createMessage ----- End");
@@ -47,13 +47,18 @@ public class MessageServiceText implements IMessageService {
 
 	@Override
 	public TextMessage updateMessage(TextMessage message) {
-		TextMessage message1 = new TextMessage(message.getId(), "hello again", LocalDateTime.now());
-		return message1;
+		log.debug("updateMessage ----- Start");
+		message.setModifiedTime(LocalDateTime.now());
+		TextMessage updatedMessage = messageRepository.save(message);
+		log.debug("updateMessage ----- End");
+		return updatedMessage;
 	}
 
 	@Override
 	public void deleteMessage(Long messageId) {
-		// TODO Auto-generated method stub
+		log.debug("deleteMessage ----- Start");
+		messageRepository.deleteById(messageId);
+		log.debug("deleteMessage ----- End");
 		
 	}
 

@@ -28,8 +28,7 @@ public class MessageController {
 	@RequestMapping(value = "/message", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<TextMessage> createMessage(@RequestBody TextMessage message) {
 		TextMessage result = messageServiceText.createMessage(message);
-		//return new ResponseEntity<TextMessage>(result, HttpStatus.CREATED);
-		return new ResponseEntity<String>("Error", HttpStatus.CREATED);
+		return new ResponseEntity<TextMessage>(result, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/message/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
