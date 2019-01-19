@@ -26,8 +26,7 @@ public class MessageServiceText implements IMessageService {
 
 	@Override
 	public TextMessage getMessage(Long messageId) {
-		TextMessage message1 = new TextMessage(messageId, "hello", LocalDateTime.now());
-		return message1;
+		return messageRepository.findById(messageId).get();
 	}
 	
 	@Override
@@ -55,11 +54,18 @@ public class MessageServiceText implements IMessageService {
 	}
 
 	@Override
-	public void deleteMessage(Long messageId) {
-		log.debug("deleteMessage ----- Start");
-		messageRepository.deleteById(messageId);
-		log.debug("deleteMessage ----- End");
-		
+	public String deleteMessage(Long messageId) {
+		TextMessage message = messageRepository.findById(messageId).get();
+		if(null == message) {
+			return "Sorry, there is no message for the id provided.";
+		} else {
+			if (message.getModifiedTime().isBefore(LocalDateTime.now().plusMinutes(-2))) {
+				messageRepository.deleteById(messageId);
+				return "Message deleted.";
+			} else {
+				return "Message can't be deleted as is not created more then 2 minutes ago.";
+			}
+		}
 	}
 
 }

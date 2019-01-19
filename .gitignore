@@ -1,6 +1,12 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
+### Apache Derby ###
+/mydb/
+*.dat
+*.log
+*.lck
+
 ### Eclipse ###
 .apt_generated
 .classpath
