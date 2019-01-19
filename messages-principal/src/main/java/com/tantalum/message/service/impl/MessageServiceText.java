@@ -2,6 +2,7 @@ package com.tantalum.message.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +26,8 @@ public class MessageServiceText implements IMessageService {
 	private MessageRepository messageRepository;
 
 	@Override
-	public TextMessage getMessage(Long messageId) {
-		return messageRepository.findById(messageId).get();
+	public Optional<TextMessage> getMessage(Long messageId) {
+		return messageRepository.findById(messageId);
 	}
 	
 	@Override

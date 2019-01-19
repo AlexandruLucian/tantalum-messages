@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Tue Jan 15 20:43:53 GMT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0168-5341-951c-00000a2a7a00 
-on database directory C:\Users\alexa\workspace\tantalum-messages\messages-principal\mydb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Sat Jan 19 12:48:01 GMT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0168-6627-5a1c-0000137e7658 
+on database directory C:\Users\alexa\workspace\tantalum-messages\messages-principal\mydb with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
 Loaded from file:/C:/Users/alexa/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_161-b12
