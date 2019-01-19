@@ -1,3 +1,6 @@
 spring:
   application:
     instance_id: adminservice
+    
+  datasource:
+    url: jdbc:derby:mydb;create=true

@@ -55,13 +55,18 @@ public class MessageService implements IMessageService {
 	}
 
 	@Override
-	public void deleteMessage(Long messageId) {
-	Optional<TextMessage> message = messageRepository.findById(messageId);
-		if(message.isPresent()) {
+	public boolean deleteMessage(Long messageId) {
+		boolean result = true;
+
+		Optional<TextMessage> message = messageRepository.findById(messageId);
+		if (message.isPresent()) {
 			if (message.get().getModifiedTime().isBefore(LocalDateTime.now().plusMinutes(-2))) {
 				messageRepository.deleteById(messageId);
 			}
+		} else {
+			result = false;
 		}
+		return result;
 	}
 
 }

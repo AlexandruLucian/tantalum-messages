@@ -58,7 +58,11 @@ public class MessageController {
 	@RequestMapping(value = "/message/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> deleteMessage(@PathVariable Long id) {
 
-		messageServiceText.deleteMessage(id);
-		return new ResponseEntity<String>("Message successfully deleted.", HttpStatus.OK);
+		boolean result = messageServiceText.deleteMessage(id);
+		if (result) {
+			return new ResponseEntity<String>("Message successfully deleted.", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("Message could not be deleted.", HttpStatus.BAD_REQUEST);
+		}
 	}
 }
